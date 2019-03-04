@@ -42,7 +42,7 @@ def workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, outp
             body = result[1]
             if '!includedir' not in header:
                 if verbose:
-                    print('\n\tWorking with ' + B + '[' + header + ']' + W + ' config')
+                    print('\n\tWorking with ' + B + '[' + header + ']' + W + ' field')
                 for data in body:
                     if verbose:
                         key = str(data[0])
