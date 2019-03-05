@@ -17,9 +17,13 @@ def readConfigFile(filePath):
     config.read(filePath)
     return config
 
+def compareConfigValue(jsonValue, configValue):
+    return jsonValue.strip() == configValue.strip()
+
 def workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output):
     with open(configDataJsonPath, 'r') as file:
         jsonData = json.load(file)
+    jsonData = jsonData['MySQLConfig']
     listConfigFiles = glob.glob(directoryPath + '/*.cnf')
     listConfigFiles.extend(glob.glob(directoryPath + '/*/*.cnf'))
 
@@ -44,12 +48,25 @@ def workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, outp
                 if verbose:
                     print('\n\tWorking with ' + B + '[' + header + ']' + W + ' field')
                 for data in body:
+                    key = str(data[0])
+                    value = ''
+                    if len(data) > 1:
+                        value = str(data[1])
                     if verbose:
-                        key = str(data[0])
-                        value = ''
-                        if len(data) > 1:
-                            value = str(data[1])
-                        print('\t\tChecking field ' + G + '[' + key + '] : ' + value + W)
+                        print('\t\tChecking field ' + G + '[' + key + '] : ' + Y + value + W)
+
+                    if key in jsonData:
+                        if not compareConfigValue(jsonData[key]['value'], value):
+                            out = R + filePath +  ' [' + header + '][' + key + ']' + W + '\n'
+                            out += B + 'Risk Scale: ' +  jsonData[key]['riskScale'] + W + '\n'
+                            out += 'Expected Value: ' +  jsonData[key]['value'] + '\nYour value: ' + value + W + '\n'
+                            out += Y + 'Description: ' +  jsonData[key]['description'] + W + '\n'
+                            out += B + 'Url: ' + jsonData[key]['url'] + W + '\n\n'
+                            print out
+                            if output != None:
+                                with open(output, 'wa') as f:
+                                    f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
+                    
                 
 
 

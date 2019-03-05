@@ -1,16 +1,18 @@
 {
-    "my.cnf": [
-      {
-        "key": "bind-address",
-        "value": "127.0.0.1",
-        "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
-        "description": "This makes sure that MySQL is not accepting connections from anywhere except for the local machine."
-      },
-      {
-        "key": "local-infile",
-        "value": "0",
-        "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
-        "description": "his will disable loading files from the filesystem for users without file level privileges to the database."
-      }
-    ]
+    "MySQLConfig": {
+        "bind-address": {
+            "value": "127.0.0.",
+            "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
+            "description": "This makes sure that MySQL is not accepting connections from anywhere except for the local machine.",
+            "riskScale": "8/10",
+            "isRequired": "True"
+        },
+        "local-infile": {
+            "value": "0",
+            "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
+            "description": "his will disable loading files from the filesystem for users without file level privileges to the database.",
+            "riskScale": "8/10",
+            "isRequired": "True"
+        }
+    }
   }
