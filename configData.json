@@ -13,14 +13,14 @@
             "description": "This will disable loading files from the filesystem for users without file level privileges to the database.",
             "riskScale": "8/10",
             "isRequired": "True"
-        }
+        },
 		"general_log_file": {
             "value": "",
             "url": "https://www.percona.com/blog/2012/12/28/auditing-login-attempts-in-mysql/",
             "description": "General log file not enabled.",
             "riskScale": "6/10",
             "isRequired": "True"
-        }
+        },
 		"log_error": {
             "value": "",
             "url": "https://www.percona.com/blog/2012/12/28/auditing-login-attempts-in-mysql/",
