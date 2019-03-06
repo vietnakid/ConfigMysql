@@ -3,6 +3,7 @@ import json
 import sys
 from pprint import pprint
 import glob
+import os
 
 from mysqlparser import mysqlparser
 
@@ -20,7 +21,7 @@ def readConfigFile(filePath):
 def compareConfigValue(jsonValue, configValue):
     return jsonValue.strip() == configValue.strip()
 
-def workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output):
+def assessMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output):
     with open(configDataJsonPath, 'r') as file:
         jsonData = json.load(file)
     jsonData = jsonData['MySQLConfig']
@@ -67,7 +68,15 @@ def workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, outp
                                 with open(output, 'wa') as f:
                                     f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
                     
-                
+
+def assessMySQLDatabase(username, password, outputHTML, verbose):
+    if len(password) != 0:
+        password = '-p' + password
+    query = 'mysql --user={0} {1} --skip-column-names -f < ./MySAT/mysat.sql > {2}'.format(username, password, outputHTML)
+    if verbose:
+        print G + '\nChecking MySQL Database by using following command: ' + W
+        print Y + query + W
+    os.system(query)
 
 
 def parser_error(errmsg):
@@ -82,8 +91,11 @@ def parse_args():
     parser.error = parser_error
     parser._optionals.title = "OPTIONS"
     parser.add_argument('-d', '--directory', help="Path to config file of MySQL", default='/etc/mysql')
+    parser.add_argument('-u', '--username', help="MySQL username", default='root')
+    parser.add_argument('-p', '--password', help="MySQL password", default='')
     parser.add_argument('-v', '--verbose', help='Enable Verbosity and display results in realtime', nargs='?', default=False)
-    parser.add_argument('-o', '--output', help='Save the results to text file')
+    parser.add_argument('-o', '--output', help='Save the assess config files results to text file', default='outputConfigAssessment.txt')
+    parser.add_argument('-ohtml', '--outputhtml', help='Save the asseess MySQL results to HTML file', default='outputMySQLSecurityAssessment.html')
     return parser.parse_args()
 
 def main():
@@ -93,8 +105,13 @@ def main():
     if verbose or verbose is None:
         verbose = True
     output = args.output
+    outputHTML = args.outputhtml
     configDataJsonPath = 'configData.json'
-    workingWithMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output)
+    username = args.username
+    password = args.password
+
+    assessMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output)
+    assessMySQLDatabase(username, password, outputHTML, verbose)
 
     
 if __name__ == "__main__":
