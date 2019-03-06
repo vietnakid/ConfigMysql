@@ -3,16 +3,30 @@
         "bind-address": {
             "value": "127.0.0.",
             "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
-            "description": "This makes sure that MySQL is not accepting connections from anywhere except for the local machine.",
+            "description": "Database listening is not localhost only",
             "riskScale": "8/10",
             "isRequired": "True"
         },
         "local-infile": {
             "value": "0",
             "url": "https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps",
-            "description": "his will disable loading files from the filesystem for users without file level privileges to the database.",
+            "description": "This will disable loading files from the filesystem for users without file level privileges to the database.",
             "riskScale": "8/10",
+            "isRequired": "True"
+        },
+		"general_log_file": {
+            "value": "",
+            "url": "https://www.percona.com/blog/2012/12/28/auditing-login-attempts-in-mysql/",
+            "description": "General log file not enabled.",
+            "riskScale": "6/10",
+            "isRequired": "True"
+        },
+		"log_error": {
+            "value": "",
+            "url": "https://www.percona.com/blog/2012/12/28/auditing-login-attempts-in-mysql/",
+            "description": "Error log file not enabled.",
+            "riskScale": "6/10",
             "isRequired": "True"
         }
     }
-  }
+}
