@@ -4,6 +4,7 @@ import sys
 from pprint import pprint
 import glob
 import os
+import MySQLdb
 
 from mysqlparser import mysqlparser
 
@@ -65,11 +66,45 @@ def assessMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output):
                             out += B + 'Url: ' + jsonData[key]['url'] + W + '\n\n'
                             print out
                             if output != None:
-                                with open(output, 'wa') as f:
+                                with open(output, 'a') as f:
                                     f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
                     
 
-def assessMySQLDatabase(username, password, outputHTML, verbose):
+def assessEachFeature(username, password, verbose, output):
+    db = MySQLdb.connect(host='localhost', user=username, passwd=password)
+    dbcurs = db.cursor()
+
+    for file in os.listdir(os.path.dirname(os.path.abspath(__file__)) + '/mysql'):
+        if file.startswith('check_') and file.endswith('.py'):
+            check = 'mysql.' + file[:-3]
+            module = __import__(check)
+            module = getattr(module, file[:-3])
+            
+            if verbose:
+                print B + check + W
+            module = module()
+            
+            dbcurs.execute(module.SQL)
+            rows = dbcurs.fetchall()
+            module.do_check(rows)
+
+            result = module.result
+            if 'level' in result:
+                out = ''
+                if result['level'].upper() == 'RED':
+                    out = R + result['output'] + W
+                elif result['level'].upper() == 'YELLOW':
+                    out = Y + result['output'] + W
+                elif result['level'].upper() == 'GREEN':
+                    out = G + result['output'] + W
+                print out
+                if output != None and result['level'].upper() != 'GREEN':
+                    with open(output, 'a') as f:
+                        out = '\nPerforming check: ' + module.TITLE + '\nRisk level: ' + result['level'] + '\n' + out + '\n'
+                        f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
+
+
+def assessMySQLDatabaseWithMySAT(username, password, outputHTML, verbose):
     if len(password) != 0:
         password = '-p' + password
     query = 'mysql --user={0} {1} --skip-column-names -f < ./MySAT/mysat.sql > {2}'.format(username, password, outputHTML)
@@ -105,13 +140,16 @@ def main():
     if verbose or verbose is None:
         verbose = True
     output = args.output
+    with open(output, 'w') as f:
+        pass
     outputHTML = args.outputhtml
     configDataJsonPath = 'configData.json'
     username = args.username
     password = args.password
 
     assessMySQLConfigFiles(directoryPath, verbose, configDataJsonPath, output)
-    assessMySQLDatabase(username, password, outputHTML, verbose)
+    assessEachFeature(username, password, verbose, output)
+    assessMySQLDatabaseWithMySAT(username, password, outputHTML, verbose)
 
     
 if __name__ == "__main__":

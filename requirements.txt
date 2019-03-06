@@ -1,2 +1,4 @@
 argparse
 pyparsing
+MySQL-python
+MySQLdb
