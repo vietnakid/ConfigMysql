@@ -13,6 +13,7 @@ Y = '\033[93m'  # yellow
 B = '\033[94m'  # blue
 R = '\033[91m'  # red
 W = '\033[0m'   # white
+P= '\033[35m' # purple
 
 def readConfigFile(filePath):
     config = configparser.ConfigParser(allow_no_value = True)
@@ -97,10 +98,11 @@ def assessEachFeature(username, password, verbose, output):
                     out = Y + result['output'] + W
                 elif result['level'].upper() == 'GREEN':
                     out = G + result['output'] + W
+                out += '\nDescription: ' + P + module.DESCRIPTION + W + '\nReference: ' + B + module.REFERENCES + W + '\n'
                 print out
                 if output != None and result['level'].upper() != 'GREEN':
                     with open(output, 'a') as f:
-                        out = '\nPerforming check: ' + module.TITLE + '\nRisk level: ' + result['level'] + '\n' + out + '\n'
+                        out = '\nPerforming check: ' + module.TITLE + '\nRisk level: ' + result['level'] + '\n' + out + '\n\n'
                         f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
 
 
