@@ -98,7 +98,7 @@ def assessEachFeature(username, password, verbose, output):
                     out = Y + result['output'] + W
                 elif result['level'].upper() == 'GREEN':
                     out = G + result['output'] + W
-                out += '\nDescription: ' + P + module.DESCRIPTION + W + '\nReference: ' + B + module.REFERENCES + W + '\n'
+                out += '\nRisk level: ' + result['level'] + '\nDescription: ' + P + module.DESCRIPTION + W + '\nReference: ' + B + module.REFERENCES + W + '\n'
                 print out
                 if output != None and result['level'].upper() != 'GREEN':
                     with open(output, 'a') as f:
