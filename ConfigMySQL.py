@@ -103,7 +103,7 @@ def assessEachFeature(username, password, verbose, output):
                 if output != None and result['level'].upper() != 'GREEN':
                     with open(output, 'a') as f:
                         out = '\nPerforming check: ' + module.TITLE + '\nRisk level: ' + result['level'] + '\n' + out + '\n\n'
-                        f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, ''))
+                        f.write(out.replace(R, '').replace(B, '').replace(Y, '').replace(G, '').replace(W, '').replace(P, ''))
 
 
 def assessMySQLDatabaseWithMySAT(username, password, outputHTML, verbose):
