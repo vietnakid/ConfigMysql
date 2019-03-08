@@ -1,10 +1,9 @@
 class check_privilege_super():
-    """
+    DESCRIPTION = """
     check_privilege_super:
     The following accounts have the SUPER privilege. Do not grant to non Admin users.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'SUPER Privilege'
     CATEGORY = 'Privilege'

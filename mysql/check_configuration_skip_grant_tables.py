@@ -1,11 +1,10 @@
 class check_configuration_skip_grant_tables():
-    """
+    DESCRIPTION = """
     check_configuration_skip_grant_tables:
     This option causes the server not to use the privilege system at all. This
     gives anyone with access to the server unrestricted access to all databases.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Skip Grant Tables'
     CATEGORY = 'Configuration'

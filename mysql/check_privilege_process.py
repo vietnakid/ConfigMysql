@@ -1,10 +1,9 @@
 class check_privilege_process():
-    """
+    DESCRIPTION = """
     check_privilege_process:
     The following accounts have the PROCESS privilege. Do not grant to non Admin users.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'PROCESS Privilege'
     CATEGORY = 'Privilege'

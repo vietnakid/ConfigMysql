@@ -1,9 +1,9 @@
 class check_privilege_stale_users():
-    """
+    DESCRIPTION = """
     check_privilege_stale_users:
     Possible stale accounts. Account exists in msyql.db but not in mysql.user.
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Stale User Privilege'
     CATEGORY = 'Privilege'

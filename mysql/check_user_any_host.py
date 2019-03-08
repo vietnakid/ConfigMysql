@@ -1,9 +1,9 @@
 class check_user_any_host():
-    """
+    DESCRIPTION = """
     check_user_any_host:
     User can connect from any host.
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Connect from Any Host'
     CATEGORY = 'User'

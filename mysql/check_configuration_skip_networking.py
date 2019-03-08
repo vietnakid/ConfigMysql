@@ -1,11 +1,10 @@
 class check_configuration_skip_networking():
-    """
+    DESCRIPTION = """
     check_configuration_skip_networking:
     Do not allow TCP/IP connections; do not bind to a port. Use if no remote
     access is needed.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Skip Networking'
     CATEGORY = 'Configuration'

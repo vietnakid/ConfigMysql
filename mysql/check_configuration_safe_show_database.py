@@ -1,11 +1,10 @@
 class check_configuration_safe_show_database():
-    """
+    DESCRIPTION = """
     check_configuration_safe_show_database:
     This option causes the SHOW DATABASES statement to display names of only
     those databases for which the user has some kind of privilege (default in 5.1)
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Safe Show Database'
     CATEGORY = 'Configuration'

@@ -1,11 +1,10 @@
 class check_configuration_skip_merge():
-    """
+    DESCRIPTION = """
     check_configuration_skip_merge:
     Prevent continued table access using a merge table even after permission
     is revoked. This option will disable use of MERGE tables.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Skip Merge'
     CATEGORY = 'Configuration'

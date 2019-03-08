@@ -1,10 +1,9 @@
 class check_privilege_global_grant():
-    """
+    DESCRIPTION = """
     check_privilege_global_grant:
     The following accounts have the Global GRANT privilege. Do not grant to non Admin users.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Global GRANT Privilege'
     CATEGORY = 'Privilege'

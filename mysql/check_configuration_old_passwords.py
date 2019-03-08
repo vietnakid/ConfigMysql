@@ -1,10 +1,9 @@
 class check_configuration_old_passwords():
-    """
+    DESCRIPTION = """
     check_configuration_old_passwords:
     This configuration parameter forces use of older insecure password hashing method.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Old Passwords'
     CATEGORY = 'Configuration'

@@ -1,9 +1,9 @@
 class check_configuration_test_database():
-    """
+    DESCRIPTION = """
     check_configuration_test_database:
     Does a test database exist?
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Test Databases'
     CATEGORY = 'Configuration'

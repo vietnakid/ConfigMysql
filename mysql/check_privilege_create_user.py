@@ -1,10 +1,9 @@
 class check_privilege_create_user():
-    """
+    DESCRIPTION = """
     check_privilege_create_user:
     The following accounts have the CREATE USER privilege. Do not grant to non Admin users.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'CREATE USER Privilege'
     CATEGORY = 'Privilege'

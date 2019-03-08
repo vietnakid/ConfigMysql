@@ -1,9 +1,9 @@
 class check_user_root_name():
-    """
+    DESCRIPTION = """
     check_user_root_name:
     Change the default name of administrator's account name (root).
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Root Account Name'
     CATEGORY = 'User'

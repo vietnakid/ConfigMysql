@@ -1,10 +1,9 @@
 class check_configuration_safe_user_create_global():
-    """
+    DESCRIPTION = """
     check_configuration_safe_user_create_global:
     Prevent GRANT from creating a new user unless a non-empty also specified.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Safe User Create (Global)'
     CATEGORY = 'Configuration'

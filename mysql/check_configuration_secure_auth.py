@@ -1,10 +1,9 @@
 class check_configuration_secure_auth():
-    """
+    DESCRIPTION = """
     check_configuration_secure_auth:
     Disallow authentication for accounts that have old (pre-4.1) passwords.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Secure Auth'
     CATEGORY = 'Configuration'

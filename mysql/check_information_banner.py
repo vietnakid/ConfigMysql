@@ -1,9 +1,9 @@
 class check_information_banner():
-    """
+    DESCRIPTION = """
     check_information_banner:
     Get database banner information.
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Database Banner'
     CATEGORY = 'Information'

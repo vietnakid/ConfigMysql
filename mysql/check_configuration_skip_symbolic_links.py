@@ -1,11 +1,10 @@
 class check_configuration_skip_symbolic_links():
-    """
+    DESCRIPTION = """
     check_configuration_skip_symbolic_links:
     Prevents sym links being used for data base files. This is especially
     important when MySQL is executing as root as arbitrary files may be overwritten.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'Skip Symbolic Links'
     CATEGORY = 'Configuration'

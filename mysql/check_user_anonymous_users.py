@@ -1,9 +1,9 @@
 class check_user_anonymous_users():
-    """
+    DESCRIPTION = """
     check_user_anonymous_users:
     Do anonymous users exist.
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Anonymous Users'
     CATEGORY = 'User'

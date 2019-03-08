@@ -1,9 +1,9 @@
 class check_configuration_host_wildcards():
-    """
+    DESCRIPTION = """
     check_configuration_host_wildcards
     Wildcard hosts should not be used.
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Wildcard Hosts'
     CATEGORY = 'Configuration'

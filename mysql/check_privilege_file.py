@@ -1,10 +1,9 @@
 class check_privilege_file():
-    """
+    DESCRIPTION = """
     check_privilege_file:
     The following accounts have the FILE privilege. Do not grant to non Admin users.
     """
-    # References:
-    # https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102
+    REFERENCES = 'https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=mysql.102'
 
     TITLE    = 'FILE Privilege'
     CATEGORY = 'Privilege'

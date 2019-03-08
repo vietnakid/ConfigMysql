@@ -1,9 +1,9 @@
 class check_configuration_version():
-    """
+    DESCRIPTION = """
     check_configuration_version:
     Determine current database version
     """
-    # References:
+    REFERENCES = ''
 
     TITLE    = 'Version Check'
     CATEGORY = 'Configuration'
