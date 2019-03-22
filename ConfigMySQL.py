@@ -84,10 +84,13 @@ def assessEachFeature(username, password, verbose, output):
             if verbose:
                 print B + check + W
             module = module()
-            
-            dbcurs.execute(module.SQL)
-            rows = dbcurs.fetchall()
-            module.do_check(rows)
+            try:
+                dbcurs.execute(module.SQL)
+                rows = dbcurs.fetchall()
+                module.do_check(rows)
+            except:
+                print 'There are some error'
+                pass
 
             result = module.result
             if 'level' in result:
